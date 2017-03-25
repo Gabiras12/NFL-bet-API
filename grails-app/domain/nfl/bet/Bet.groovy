@@ -3,11 +3,13 @@ package nfl.bet
 
 class Bet {
     int type
+    float points
+    boolean hasBeenComputed
+    boolean hit
     Team beatingTeam
     User user
-    Result result
+    static belongsTo = [game : Game]
 
     static constraints = {
-      result nullable: true
     }
 }

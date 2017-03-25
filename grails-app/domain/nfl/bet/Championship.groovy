@@ -8,5 +8,6 @@ class Championship {
     static hasMany = [teams : Team, rounds : Round]
 
     static constraints = {
+      championshipNumber unique: true
     }
 }

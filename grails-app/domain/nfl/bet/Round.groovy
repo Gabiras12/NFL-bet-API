@@ -7,7 +7,7 @@ class Round {
     Date betLimitDate
 
     static belongsTo = [championship : Championship]
-    static hasMany = [matchs : Match]
+    static hasMany = [games : Game]
 
     static constraints = {
     }
