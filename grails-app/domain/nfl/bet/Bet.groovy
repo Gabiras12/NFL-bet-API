@@ -13,7 +13,7 @@ class Bet {
     static constraints = {
       user nullable: true
       points default: 0, nullable: true
-      hasBeenComputed default: true, nullable: true
+      hasBeenComputed default: false, nullable: true
       hit default: true, nullable: true
     }
 }
