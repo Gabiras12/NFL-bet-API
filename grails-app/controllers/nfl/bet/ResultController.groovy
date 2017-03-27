@@ -7,23 +7,16 @@ import grails.converters.*
 class ResultController {
 	static responseFormats = ['json', 'xml']
 	public static final int VD = 1
+	public static final int VF = 2
 
 	def index() {
 			def bets = Bet.list()
 			bets.each { bet ->
 				if (bet.game.winner.id == bet.beatingTeam.id) {
 					if (bet.game.scoreDiference > 10) {
-						if (bet.type == VD) {
-							bet.points = 10
-						} else {
-							bet.points = 5
-						}
+						calculateUserPoints(bet, VD)
 					} else {
-						if (bet.type == VD) {
-							bet.points = 5
-						} else {
-							bet.points = 10
-						}
+						calculateUserPoints(bet, VF)
 					}
 					bet.hit = true
 				}
@@ -36,4 +29,12 @@ class ResultController {
 			}
 			respond bets
 		}
+
+	private void calculateUserPoints(Bet bet, int bettingType) {
+		if (bet.type == bettingType) {
+			bet.points = 10
+		} else {
+			bet.points = 5
+		}
+	}
 }

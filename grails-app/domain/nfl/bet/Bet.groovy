@@ -14,6 +14,6 @@ class Bet {
       user nullable: true
       points default: 0, nullable: true
       hasBeenComputed default: false, nullable: true
-      hit default: true, nullable: true
+      hit default: false, nullable: true
     }
 }
